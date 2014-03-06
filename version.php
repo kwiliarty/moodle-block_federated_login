@@ -15,12 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Display a list of resources in a block
+ * Manage federated logins
  *
- * @package block_learningresources
- * @copyright 2013 Smith College ITS
+ * @package block_federated_login
+ * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version = 2013071201;
+$plugin->version = 2014030701;
 $plugin->requires = 2010112400;
