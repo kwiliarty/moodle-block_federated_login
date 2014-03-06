@@ -15,25 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Display a list of resources in a block
+ * Manage federated logins
  *
- * @package block_learningresources
- * @copyright 2013 Smith College ITS
+ * @package block_federated_login
+ * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/* global setting: link target */
-$settings->add(new admin_setting_configcheckbox('learningresources/new_window',
-                                                get_string('openlinkssetting', 'block_learningresources'),
-                                                '',
-                                                'learningresources',
-                                                1));
-
-/* global setting: raw list of resources */
-$settings->add(new admin_setting_configtextarea('learningresources/link_list',
-                                                get_string('listsetting', 'block_learningresources'),
-                                                get_string('listsettingdesc', 'block_learningresources'),
-                                                '',
-                                                PARAM_RAW,
-                                                120,
-                                                20));
