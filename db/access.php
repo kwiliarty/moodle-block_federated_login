@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Display a list of resources in a block
+ * Manage federated logins
  *
- * @package block_learningresources
- * @copyright 2013 Smith College ITS
+ * @package block_federated_login
+ * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 /* Standard permissions for Moodle blocks */
 $capabilities = array(
 
-    'block/learningresources:myaddinstance' => array(
+    'block/federated_login:myaddinstance' => array(
         'captype'      => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes'   => array(
@@ -37,7 +37,7 @@ $capabilities = array(
         'clonepermissionsfrom' => 'moodle/my:manageblocks'
     ),
 
-    'block/learningresources:addinstance' => array(
+    'block/federated_login:addinstance' => array(
         'riskbitmask'  => RISK_SPAM | RISK_XSS,
 
         'captype'      => 'write',
