@@ -48,6 +48,12 @@ class block_federated_login extends block_base {
      */
     public function get_content() {
 
+        if ( $this->content !== NULL ) {
+            return $this->content;
+        }
+
+        $login = new block_federated_login_handler();
+
         $this->content = new stdClass;
         $this->content->text = "It's working.";
 

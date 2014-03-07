@@ -28,6 +28,6 @@
  * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_federated_login_event {
+class block_federated_login_handler {
 
 }
