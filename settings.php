@@ -22,6 +22,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+require_once(dirname(__FILE__) . '/federated_login.class.php');
+
 defined('MOODLE_INTERNAL') || die;
 
 $settings->add(new admin_setting_configtext('block_federated_login_home_cookie_name' ,
@@ -36,4 +38,4 @@ for ($i = 0; $i <= 10; $i++) {
 $settings->add(new admin_setting_configselect('block_federated_login_school_count',
     get_string('schoolcount', 'block_federated_login'),
     get_string('configschoolcount', 'block_federated_login'),
-    5, $numbers2select));
+    BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT, $numbers2select));

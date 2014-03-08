@@ -23,6 +23,11 @@
  */
 
 /**
+ * Definitions
+ */
+define('BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT', 5);
+
+/**
  * The federated login
  *
  * @copyright 2014 Smith College ITS
