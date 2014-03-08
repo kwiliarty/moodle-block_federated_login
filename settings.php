@@ -22,3 +22,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die;
+
+$settings->add(new admin_setting_configtext('block_federated_login_home_cookie_name' ,
+    get_string('homecookiename', 'block_federated_login') ,
+    get_string('confighomecookiename', 'block_federated_login') , ''));

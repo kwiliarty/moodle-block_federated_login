@@ -22,4 +22,6 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['federated_login'] = 'Federated Login';
+$string['confighomecookiename'] = "Enter the name of the cookie that sets a user's home institution";
+$string['federated_login']      = 'Federated login';
+$string['homecookiename']       = 'Home cookie name';

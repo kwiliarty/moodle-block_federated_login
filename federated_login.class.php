@@ -34,9 +34,17 @@ class block_federated_login_handler {
 
     public $home_institution = false;
 
+    public $home_cookie_name = '';
+
     public function __construct() {
-        if ( array_key_exists( '_redirect_user_idp' , $_COOKIE )) {
-            $cookie = $_COOKIE['_redirect_user_idp'];
+        global $CFG;
+
+        if (isset($CFG->block_federated_login_home_cookie_name)) {
+            $this->home_cookie_name = $CFG->block_federated_login_home_cookie_name;
+        }
+
+        if ( array_key_exists( $this->home_cookie_name , $_COOKIE )) {
+            $cookie = $_COOKIE[$this->home_cookie_name];
             $this->home_institution = $cookie;
         }
     }
