@@ -30,4 +30,10 @@
  */
 class block_federated_login_handler {
 
+    public $content;
+
+    public function get_content() {
+        return "It's working.";
+    }
+
 }

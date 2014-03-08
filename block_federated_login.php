@@ -55,7 +55,7 @@ class block_federated_login extends block_base {
         $login = new block_federated_login_handler();
 
         $this->content = new stdClass;
-        $this->content->text = "It's working.";
+        $this->content->text = $login->get_content();
 
         return $this->content;
     }
