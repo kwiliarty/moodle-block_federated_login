@@ -50,4 +50,8 @@ for ($i = 1; $i <= $numberofschools; $i++) {
     $settings->add(new admin_setting_configtext("block_federated_login_school_id_${i}",
         get_string('schoolid' , 'block_federated_login') . " $i",
         get_string('configschoolid', 'block_federated_login'), ''));
+
+    $settings->add(new admin_setting_configtext("block_federated_login_school_name_${i}",
+        get_string('schoolname' , 'block_federated_login') . " $i",
+        get_string('configschoolname', 'block_federated_login'), ''));
 }
