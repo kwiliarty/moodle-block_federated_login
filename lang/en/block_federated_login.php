@@ -31,3 +31,4 @@ $string['homecookiename']       = 'Home cookie name';
 $string['schoolcount']          = 'Number of schools';
 $string['schoolid']             = 'School id';
 $string['schoolname']           = 'School name';
+$string['schoolsettings']       = 'Settings for school';

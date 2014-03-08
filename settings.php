@@ -47,6 +47,9 @@ if (isset($CFG->block_federated_login_school_count)) {
 
 for ($i = 1; $i <= $numberofschools; $i++) {
 
+    $settings->add(new admin_setting_heading("block_federated_login_school_heading_${i}",
+        get_string('schoolsettings', 'block_federated_login') . " $i", ''));
+
     $settings->add(new admin_setting_configtext("block_federated_login_school_id_${i}",
         get_string('schoolid' , 'block_federated_login') . " $i",
         get_string('configschoolid', 'block_federated_login'), ''));
