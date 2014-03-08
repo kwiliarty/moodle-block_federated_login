@@ -25,10 +25,12 @@
 $string['confighomecookiename'] = "Enter the name of the cookie that sets a user's home institution";
 $string['configschoolcount']    = 'How many schools need to be configured?';
 $string['configschoolid']       = 'Enter a unique identifier for the school';
+$string['configschoolidp']      = "Enter the URL for the school's IDP";
 $string['configschoolname']     = 'Enter a display name for the school';
 $string['federated_login']      = 'Federated login';
 $string['homecookiename']       = 'Home cookie name';
 $string['schoolcount']          = 'Number of schools';
 $string['schoolid']             = 'School id';
+$string['schoolidp']            = 'School IDP';
 $string['schoolname']           = 'School name';
 $string['schoolsettings']       = 'Settings for school';
