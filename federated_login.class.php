@@ -32,8 +32,17 @@ class block_federated_login_handler {
 
     public $content;
 
+    public $home_institution = false;
+
+    public function __construct() {
+        if ( array_key_exists( '_redirect_user_idp' , $_COOKIE )) {
+            $cookie = $_COOKIE['_redirect_user_idp'];
+            $this->home_institution = $cookie;
+        }
+    }
+
     public function get_content() {
-        return "It's working.";
+        return "<pre>" . print_r($this->home_institution) . "</pre>";
     }
 
 }
