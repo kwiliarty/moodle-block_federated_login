@@ -39,3 +39,15 @@ $settings->add(new admin_setting_configselect('block_federated_login_school_coun
     get_string('schoolcount', 'block_federated_login'),
     get_string('configschoolcount', 'block_federated_login'),
     BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT, $numbers2select));
+
+$numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
+if (isset($CFG->block_federated_login_school_count)) {
+    $numberofschools = $CFG->block_federated_login_school_count;
+}
+
+for ($i = 1; $i <= $numberofschools; $i++) {
+
+    $settings->add(new admin_setting_configtext("block_federated_login_school_id_${i}",
+        get_string('schoolid' , 'block_federated_login') . " $i",
+        get_string('configschoolid', 'block_federated_login'), ''));
+}
