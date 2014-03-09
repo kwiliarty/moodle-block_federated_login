@@ -30,6 +30,10 @@ $settings->add(new admin_setting_configtext('block_federated_login_home_cookie_n
     get_string('homecookiename', 'block_federated_login') ,
     get_string('confighomecookiename', 'block_federated_login') , ''));
 
+$settings->add(new admin_setting_configtext('block_federated_login_home_cookie_manager' ,
+    get_string('homecookiemanager', 'block_federated_login') ,
+    get_string('confighomecookiemanager', 'block_federated_login') , ''));
+
 $numbers2select = array();
 for ($i = 0; $i <= 10; $i++) {
     $numbers2select[] = $i;

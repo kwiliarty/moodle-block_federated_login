@@ -22,15 +22,17 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['confighomecookiename'] = "Enter the name of the cookie that sets a user's home institution";
-$string['configschoolcount']    = 'How many schools need to be configured?';
-$string['configschoolid']       = 'Enter a unique identifier for the school';
-$string['configschoolidp']      = "Enter the URL for the school's IDP";
-$string['configschoolname']     = 'Enter a display name for the school';
-$string['federated_login']      = 'Federated login';
-$string['homecookiename']       = 'Home cookie name';
-$string['schoolcount']          = 'Number of schools';
-$string['schoolid']             = 'School id';
-$string['schoolidp']            = 'School IDP';
-$string['schoolname']           = 'School name';
-$string['schoolsettings']       = 'Settings for school';
+$string['confighomecookiename']    = "Enter the name of the cookie that sets a user's home institution";
+$string['confighomecookiemanager'] = "Enter the URL where users can manage and clear the home institution cookie";
+$string['configschoolcount']       = 'How many schools need to be configured?';
+$string['configschoolid']          = 'Enter a unique identifier for the school';
+$string['configschoolidp']         = "Enter the URL for the school's IDP";
+$string['configschoolname']        = 'Enter a display name for the school';
+$string['federated_login']         = 'Federated login';
+$string['homecookiename']          = 'Home cookie name';
+$string['homecookiemanager']       = 'Home cookie manager';
+$string['schoolcount']             = 'Number of schools';
+$string['schoolid']                = 'School id';
+$string['schoolidp']               = 'School IDP';
+$string['schoolname']              = 'School name';
+$string['schoolsettings']          = 'Settings for school';
