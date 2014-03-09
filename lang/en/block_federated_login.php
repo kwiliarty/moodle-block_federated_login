@@ -31,6 +31,7 @@ $string['configschoolname']        = 'Enter a display name for the school';
 $string['federated_login']         = 'Federated login';
 $string['homecookiename']          = 'Home cookie name';
 $string['homecookiemanager']       = 'Home cookie manager';
+$string['managehome']              = 'Manage home institution';
 $string['schoolcount']             = 'Number of schools';
 $string['schoolid']                = 'School id';
 $string['schoolidp']               = 'School IDP';

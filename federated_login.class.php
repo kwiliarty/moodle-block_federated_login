@@ -41,17 +41,20 @@ class block_federated_login_handler {
     public $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
     public $schools = array();
     public $home_school = array();
+    public $cookie_manager = '';
 
     public function __construct() {
 
         $this->get_cookie_value();
         $this->get_schools();
         $this->get_home_school();
+        $this->get_cookie_manager();
 
     }
 
     public function get_content() {
         $this->content = (!empty($this->home_school)) ? "Login via: " . $this->home_school['name'] : "Not set";
+        $this->content .= $this->print_cookie_manager();
         return $this->content;;
     }
 
@@ -103,6 +106,25 @@ class block_federated_login_handler {
                 return;
             }
         }
+    }
+
+    public function get_cookie_manager() {
+
+        global $CFG;
+
+        if (isset($CFG->block_federated_login_home_cookie_manager)) {
+            $this->cookie_manager = $CFG->block_federated_login_home_cookie_manager;
+        }
+    }
+
+    public function print_cookie_manager() {
+
+        $link_attributes = array('target' => '_blank');
+        $cookie_manager_link = html_writer::link( $this->cookie_manager ,
+            get_string('managehome', 'block_federated_login') ,
+            $link_attributes );
+        $cookie_manager_div = html_writer::tag('div', $cookie_manager_link, array('class'=>'cookie-manager'));
+        return $cookie_manager_div;
     }
 
 }
