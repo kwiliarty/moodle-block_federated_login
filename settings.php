@@ -66,3 +66,11 @@ for ($i = 1; $i <= $numberofschools; $i++) {
         get_string('schoolidp' , 'block_federated_login') . " $i",
         get_string('configschoolidp', 'block_federated_login'), ''));
 }
+
+$settings->add(new admin_setting_configtext('block_federated_login_help_text',
+    get_string('helptext', 'block_federated_login'),
+    get_string('confighelptext', 'block_federated_login'), ''));
+
+$settings->add(new admin_setting_configtext('block_federated_login_help_url',
+    get_string('helpurl', 'block_federated_login'),
+    get_string('confighelpurl', 'block_federated_login'), ''));

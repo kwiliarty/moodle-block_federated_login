@@ -23,6 +23,8 @@
  */
 
 $string['accounthome']             = 'Default home:';
+$string['confighelptext']          = 'Text to display as a help link';
+$string['confighelpurl']           = 'URL to a help page';
 $string['confighomecookiename']    = "Enter the name of the cookie that sets a user's home institution";
 $string['confighomecookiemanager'] = "Enter the URL where users can manage and clear the home institution cookie";
 $string['configschoolcount']       = 'How many schools need to be configured?';
@@ -30,6 +32,8 @@ $string['configschoolid']          = 'Enter a unique identifier for the school';
 $string['configschoolidp']         = "Enter the URL for the school's IDP";
 $string['configschoolname']        = 'Enter a display name for the school';
 $string['federated_login']         = 'Federated login';
+$string['helptext']                = 'Help link text';
+$string['helpurl']                 = 'Help link URL';
 $string['homecookiename']          = 'Home cookie name';
 $string['homecookiemanager']       = 'Home cookie manager';
 $string['managehome']              = 'Manage default home';
