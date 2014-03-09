@@ -54,6 +54,7 @@ class block_federated_login_handler {
 
     public function get_content() {
         $this->content .= $this->print_home_school();
+        $this->content .= $this->print_login_url();
         $this->content .= $this->print_cookie_manager();
         return $this->content;;
     }
@@ -126,6 +127,21 @@ class block_federated_login_handler {
             array('class'=>'login-account-home'));
 
         return $account_home_div;
+    }
+
+    public function print_login_url() {
+
+        global $CFG;
+
+        if (!isloggedin() || isguestuser()) {
+            $url = get_login_url();
+            $login_link = html_writer::link($url, get_string('login'));
+        } else {
+            $url = new moodle_url($CFG->httpswwwroot.'/login/logout.php', array('sesskey'=>sesskey()));
+            $login_link = html_writer::link($url, get_string('logout'));
+        }
+        $login_div = html_writer::tag('div', $login_link, array('class'=>'login-link-div'));
+        return $login_div;
     }
 
     public function print_cookie_manager() {
