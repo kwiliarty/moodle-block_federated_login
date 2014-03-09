@@ -53,8 +53,8 @@ class block_federated_login_handler {
     }
 
     public function get_content() {
-        $this->content .= $this->print_home_school();
         $this->content .= $this->print_login_url();
+        $this->content .= $this->print_home_school();
         $this->content .= $this->print_cookie_manager();
         return $this->content;;
     }
