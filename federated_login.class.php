@@ -53,7 +53,7 @@ class block_federated_login_handler {
     }
 
     public function get_content() {
-        $this->content = (!empty($this->home_school)) ? "Login via: " . $this->home_school['name'] : "Not set";
+        $this->content .= $this->print_home_school();
         $this->content .= $this->print_cookie_manager();
         return $this->content;;
     }
@@ -115,6 +115,17 @@ class block_federated_login_handler {
         if (isset($CFG->block_federated_login_home_cookie_manager)) {
             $this->cookie_manager = $CFG->block_federated_login_home_cookie_manager;
         }
+    }
+
+    public function print_home_school() {
+
+        $account_home = (!empty($this->home_school)) ? $this->home_school['name'] : get_string('notset', 'block_federated_login');
+
+        $account_home_div = html_writer::tag('div',
+            get_string('accounthome', 'block_federated_login') . " $account_home",
+            array('class'=>'login-account-home'));
+
+        return $account_home_div;
     }
 
     public function print_cookie_manager() {
