@@ -36,43 +36,47 @@ define('BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT', 5);
 class block_federated_login_handler {
 
     public $content;
-
-    public $home_institution = false;
-
-    public $home_cookie_name = '';
-
+    public $cookie_name = '';
+    public $cookie_value = '';
+    public $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
     public $schools = array();
+    public $home_school = array();
 
     public function __construct() {
-        global $CFG;
 
+        $this->get_cookie_value();
         $this->get_schools();
-
-        if (isset($CFG->block_federated_login_home_cookie_name)) {
-            $this->home_cookie_name = $CFG->block_federated_login_home_cookie_name;
-        }
-
-        if ( array_key_exists( $this->home_cookie_name , $_COOKIE )) {
-            $cookie = $_COOKIE[$this->home_cookie_name];
-            $this->home_institution = $cookie;
-        }
+        $this->get_home_school();
 
     }
 
     public function get_content() {
-        return "<pre>" . print_r($this->schools) . "</pre>";
+        $this->content = (!empty($this->home_school)) ? "Login via: " . $this->home_school['name'] : "Not set";
+        return $this->content;;
+    }
+
+    public function get_cookie_value() {
+
+        global $CFG;
+
+        if (isset($CFG->block_federated_login_home_cookie_name)) {
+            $this->cookie_name = $CFG->block_federated_login_home_cookie_name;
+        }
+
+        if ( array_key_exists( $this->cookie_name , $_COOKIE )) {
+            $this->cookie_value = $_COOKIE[$this->cookie_name];
+        }
     }
 
     public function get_schools() {
 
         global $CFG;
 
-        $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
         if (isset($CFG->block_federated_login_school_count)) {
-            $numberofschools = $CFG->block_federated_login_school_count;
+            $this->numberofschools = $CFG->block_federated_login_school_count;
         }
 
-        for ($i = 1; $i <= $numberofschools; $i++) {
+        for ($i = 1; $i <= $this->numberofschools; $i++) {
             $id_property = "block_federated_login_school_id_$i";
             $id   = $CFG->$id_property;
             $name_property = "block_federated_login_school_name_$i";
@@ -85,6 +89,19 @@ class block_federated_login_handler {
                 'name' => $name,
                 'idp'  => $idp
             );
+        }
+    }
+
+    public function get_home_school() {
+        if (empty($this->cookie_value)) {
+            $this->home_school = '';
+            return;
+        }
+        foreach ($this->schools as $school) {
+            if ($school['idp'] == $this->cookie_value) {
+                $this->home_school = $school;
+                return;
+            }
         }
     }
 
