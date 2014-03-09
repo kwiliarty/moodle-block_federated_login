@@ -119,6 +119,10 @@ class block_federated_login_handler {
 
     public function print_cookie_manager() {
 
+        if (empty($this->cookie_manager)) {
+            return '';
+        }
+
         $link_attributes = array('target' => '_blank');
         $cookie_manager_link = html_writer::link( $this->cookie_manager ,
             get_string('managehome', 'block_federated_login') ,
