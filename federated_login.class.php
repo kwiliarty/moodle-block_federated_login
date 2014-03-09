@@ -46,22 +46,7 @@ class block_federated_login_handler {
     public function __construct() {
         global $CFG;
 
-        $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
-        if (isset($CFG->block_federated_login_school_count)) {
-            $numberofschools = $CFG->block_federated_login_school_count;
-        }
-
-        for ($i = 1; $i <= $numberofschools; $i++) {
-            $id   = $CFG->block_federated_login_school_id_$i;
-            $name = $CFG->block_federated_login_school_name_$i;
-            $idp  = $CFG->block_federated_login_school_idp_$i;
-            if (empty($id) || empty($name) || empty($idp)) { continue; }
-            $this->schools[$id] = array(
-                'id' => $id,
-                'name' => $name,
-                'idp'  => $idp
-            )
-        }
+        $this->get_schools();
 
         if (isset($CFG->block_federated_login_home_cookie_name)) {
             $this->home_cookie_name = $CFG->block_federated_login_home_cookie_name;
@@ -75,7 +60,32 @@ class block_federated_login_handler {
     }
 
     public function get_content() {
-        return "<pre>" . print_r($this->home_institution) . "</pre>";
+        return "<pre>" . print_r($this->schools) . "</pre>";
+    }
+
+    public function get_schools() {
+
+        global $CFG;
+
+        $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
+        if (isset($CFG->block_federated_login_school_count)) {
+            $numberofschools = $CFG->block_federated_login_school_count;
+        }
+
+        for ($i = 1; $i <= $numberofschools; $i++) {
+            $id_property = "block_federated_login_school_id_$i";
+            $id   = $CFG->$id_property;
+            $name_property = "block_federated_login_school_name_$i";
+            $name = $CFG->$name_property;
+            $idp_property = "block_federated_login_school_idp_$i";
+            $idp  = $CFG->$idp_property;
+            if (empty($id) || empty($name) || empty($idp)) { continue; }
+            $this->schools[$id] = array(
+                'id' => $id,
+                'name' => $name,
+                'idp'  => $idp
+            );
+        }
     }
 
 }
