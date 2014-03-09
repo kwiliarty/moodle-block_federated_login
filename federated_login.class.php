@@ -41,8 +41,27 @@ class block_federated_login_handler {
 
     public $home_cookie_name = '';
 
+    public $schools = array();
+
     public function __construct() {
         global $CFG;
+
+        $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
+        if (isset($CFG->block_federated_login_school_count)) {
+            $numberofschools = $CFG->block_federated_login_school_count;
+        }
+
+        for ($i = 1; $i <= $numberofschools; $i++) {
+            $id   = $CFG->block_federated_login_school_id_$i;
+            $name = $CFG->block_federated_login_school_name_$i;
+            $idp  = $CFG->block_federated_login_school_idp_$i;
+            if (empty($id) || empty($name) || empty($idp)) { continue; }
+            $this->schools[$id] = array(
+                'id' => $id,
+                'name' => $name,
+                'idp'  => $idp
+            )
+        }
 
         if (isset($CFG->block_federated_login_home_cookie_name)) {
             $this->home_cookie_name = $CFG->block_federated_login_home_cookie_name;
@@ -52,6 +71,7 @@ class block_federated_login_handler {
             $cookie = $_COOKIE[$this->home_cookie_name];
             $this->home_institution = $cookie;
         }
+
     }
 
     public function get_content() {
