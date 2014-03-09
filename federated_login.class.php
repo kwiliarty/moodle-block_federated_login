@@ -56,6 +56,7 @@ class block_federated_login_handler {
         $this->content .= $this->print_login_url();
         $this->content .= $this->print_home_school();
         $this->content .= $this->print_cookie_manager();
+        $this->content .= $this->print_help_link();
         return $this->content;;
     }
 
@@ -156,6 +157,23 @@ class block_federated_login_handler {
             $link_attributes );
         $cookie_manager_div = html_writer::tag('div', $cookie_manager_link, array('class'=>'cookie-manager'));
         return $cookie_manager_div;
+    }
+
+    public function print_help_link() {
+
+        global $CFG;
+
+        $helpurl = $CFG->block_federated_login_help_url;
+        $helptext = $CFG->block_federated_login_help_text;
+
+        if (empty($helpurl) || empty($helptext)) {
+            return '';
+        }
+
+        $link = html_writer::link($helpurl, $helptext, array('target'=>'_blank'));
+        $helpdiv = html_writer::tag('div', $link, array('class'=>'federated-login-help'));
+        return $helpdiv;
+
     }
 
 }
