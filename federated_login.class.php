@@ -137,12 +137,16 @@ class block_federated_login_handler {
         if (!isloggedin() || isguestuser()) {
             $url = get_login_url();
             $login_link = html_writer::link($url, get_string('login'));
+            $current_status = get_string('notloggedin', 'block_federated_login');
         } else {
             $url = new moodle_url($CFG->httpswwwroot.'/login/logout.php', array('sesskey'=>sesskey()));
             $login_link = html_writer::link($url, get_string('logout'));
+            $current_status = get_string('loggedin', 'block_federated_login');
         }
+        $currently = get_string('currently', 'block_federated_login');
+        $current_div = html_writer::tag('div', "$currently $current_status", array('class'=>'login-status-div'));
         $login_div = html_writer::tag('div', $login_link, array('class'=>'login-link-div'));
-        return $login_div;
+        return "$current_div\n$login_div";
     }
 
     public function print_cookie_manager() {
