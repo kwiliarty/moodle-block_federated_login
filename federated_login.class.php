@@ -36,40 +36,40 @@ define('BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT', 5);
 class block_federated_login_handler {
 
     public $content;
-    public $cookie_name = '';
-    public $cookie_value = '';
+    public $cookiename = '';
+    public $cookievalue = '';
     public $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
     public $schools = array();
-    public $home_school = array();
-    public $cookie_manager = '';
+    public $homeschool = array();
+    public $cookiemanager = '';
 
     public function __construct() {
 
-        $this->get_cookie_value();
+        $this->get_cookievalue();
         $this->get_schools();
-        $this->get_home_school();
-        $this->get_cookie_manager();
+        $this->get_homeschool();
+        $this->get_cookiemanager();
 
     }
 
     public function get_content() {
         $this->content .= $this->print_login_url();
-        $this->content .= $this->print_home_school();
-        $this->content .= $this->print_cookie_manager();
+        $this->content .= $this->print_homeschool();
+        $this->content .= $this->print_cookiemanager();
         $this->content .= $this->print_help_link();
         return $this->content;;
     }
 
-    public function get_cookie_value() {
+    public function get_cookievalue() {
 
         global $CFG;
 
         if (isset($CFG->block_federated_login_home_cookie_name)) {
-            $this->cookie_name = $CFG->block_federated_login_home_cookie_name;
+            $this->cookiename = $CFG->block_federated_login_home_cookie_name;
         }
 
-        if ( array_key_exists( $this->cookie_name , $_COOKIE )) {
-            $this->cookie_value = $_COOKIE[$this->cookie_name];
+        if ( array_key_exists( $this->cookiename , $_COOKIE )) {
+            $this->cookievalue = $_COOKIE[$this->cookiename];
         }
     }
 
@@ -82,13 +82,15 @@ class block_federated_login_handler {
         }
 
         for ($i = 1; $i <= $this->numberofschools; $i++) {
-            $id_property = "block_federated_login_school_id_$i";
-            $id   = $CFG->$id_property;
-            $name_property = "block_federated_login_school_name_$i";
-            $name = $CFG->$name_property;
-            $idp_property = "block_federated_login_school_idp_$i";
-            $idp  = $CFG->$idp_property;
-            if (empty($id) || empty($name) || empty($idp)) { continue; }
+            $idproperty = "block_federated_login_school_id_$i";
+            $id   = $CFG->$idproperty;
+            $nameproperty = "block_federated_login_school_name_$i";
+            $name = $CFG->$nameproperty;
+            $idpproperty = "block_federated_login_school_idp_$i";
+            $idp  = $CFG->$idpproperty;
+            if (empty($id) || empty($name) || empty($idp)) {
+                continue;
+            }
             $this->schools[$id] = array(
                 'id' => $id,
                 'name' => $name,
@@ -97,37 +99,37 @@ class block_federated_login_handler {
         }
     }
 
-    public function get_home_school() {
-        if (empty($this->cookie_value)) {
-            $this->home_school = '';
+    public function get_homeschool() {
+        if (empty($this->cookievalue)) {
+            $this->homeschool = '';
             return;
         }
         foreach ($this->schools as $school) {
-            if ($school['idp'] == $this->cookie_value) {
-                $this->home_school = $school;
+            if ($school['idp'] == $this->cookievalue) {
+                $this->homeschool = $school;
                 return;
             }
         }
     }
 
-    public function get_cookie_manager() {
+    public function get_cookiemanager() {
 
         global $CFG;
 
         if (isset($CFG->block_federated_login_home_cookie_manager)) {
-            $this->cookie_manager = $CFG->block_federated_login_home_cookie_manager;
+            $this->cookiemanager = $CFG->block_federated_login_home_cookie_manager;
         }
     }
 
-    public function print_home_school() {
+    public function print_homeschool() {
 
-        $account_home = (!empty($this->home_school)) ? $this->home_school['name'] : get_string('notset', 'block_federated_login');
+        $accounthome = (!empty($this->homeschool)) ? $this->homeschool['name'] : get_string('notset', 'block_federated_login');
 
-        $account_home_div = html_writer::tag('div',
-            get_string('accounthome', 'block_federated_login') . " $account_home",
-            array('class'=>'login-account-home'));
+        $accounthomediv = html_writer::tag('div',
+            get_string('accounthome', 'block_federated_login') . " $accounthome",
+            array('class' => 'login-account-home'));
 
-        return $account_home_div;
+        return $accounthomediv;
     }
 
     public function print_login_url() {
@@ -136,31 +138,31 @@ class block_federated_login_handler {
 
         if (!isloggedin() || isguestuser()) {
             $url = get_login_url();
-            $login_link = html_writer::link($url, get_string('login'));
-            $current_status = get_string('notloggedin', 'block_federated_login');
+            $loginlink = html_writer::link($url, get_string('login'));
+            $currentstatus = get_string('notloggedin', 'block_federated_login');
         } else {
-            $url = new moodle_url($CFG->httpswwwroot.'/login/logout.php', array('sesskey'=>sesskey()));
-            $login_link = html_writer::link($url, get_string('logout'));
-            $current_status = get_string('loggedin', 'block_federated_login');
+            $url = new moodle_url($CFG->httpswwwroot.'/login/logout.php', array('sesskey' => sesskey()));
+            $loginlink = html_writer::link($url, get_string('logout'));
+            $currentstatus = get_string('loggedin', 'block_federated_login');
         }
         $currently = get_string('currently', 'block_federated_login');
-        $current_div = html_writer::tag('div', "$currently $current_status", array('class'=>'login-status-div'));
-        $login_div = html_writer::tag('div', $login_link, array('class'=>'login-link-div'));
-        return "$current_div\n$login_div";
+        $currentdiv = html_writer::tag('div', "$currently $currentstatus", array('class' => 'login-status-div'));
+        $logindiv = html_writer::tag('div', $loginlink, array('class' => 'login-link-div'));
+        return "$currentdiv\n$logindiv";
     }
 
-    public function print_cookie_manager() {
+    public function print_cookiemanager() {
 
-        if (empty($this->cookie_manager)) {
+        if (empty($this->cookiemanager)) {
             return '';
         }
 
-        $link_attributes = array('target' => '_blank');
-        $cookie_manager_link = html_writer::link( $this->cookie_manager ,
+        $linkattributes = array('target' => '_blank');
+        $cookiemanagerlink = html_writer::link( $this->cookiemanager ,
             get_string('managehome', 'block_federated_login') ,
-            $link_attributes );
-        $cookie_manager_div = html_writer::tag('div', $cookie_manager_link, array('class'=>'cookie-manager'));
-        return $cookie_manager_div;
+            $linkattributes );
+        $cookiemanagerdiv = html_writer::tag('div', $cookiemanagerlink, array('class' => 'cookie-manager'));
+        return $cookiemanagerdiv;
     }
 
     public function print_help_link() {
@@ -174,8 +176,8 @@ class block_federated_login_handler {
             return '';
         }
 
-        $link = html_writer::link($helpurl, $helptext, array('target'=>'_blank'));
-        $helpdiv = html_writer::tag('div', $link, array('class'=>'federated-login-help'));
+        $link = html_writer::link($helpurl, $helptext, array('target' => '_blank'));
+        $helpdiv = html_writer::tag('div', $link, array('class' => 'federated-login-help'));
         return $helpdiv;
 
     }
