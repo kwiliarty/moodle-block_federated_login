@@ -48,7 +48,7 @@ class block_federated_login extends block_base {
      */
     public function get_content() {
 
-        if ( $this->content !== NULL ) {
+        if ( $this->content !== null ) {
             return $this->content;
         }
 
