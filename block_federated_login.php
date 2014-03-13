@@ -44,6 +44,13 @@ class block_federated_login extends block_base {
     }
 
     /**
+     * Custom titles for each block instance
+     */
+    public function specialization() {
+        $this->title = isset($this->config->title) ? $this->config->title : get_string('federated_login', 'block_federated_login');
+    }
+
+    /**
      * Content for the block on the course page
      */
     public function get_content() {
