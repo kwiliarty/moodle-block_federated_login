@@ -22,5 +22,20 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version = 2014031302;
-$plugin->requires = 2010112400;
+defined('MOODLE_INTERNAL') || die;
+
+class block_federated_login_edit_form extends block_edit_form {
+
+    protected function specific_definition($mform) {
+
+        // Section header title according to language file.
+        $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
+    
+        // Set the title for the block.
+        $mform->addElement('text', 'config_title', get_string('configtitle', 'block_federated_login'));
+        $mform->setDefault('config_title', get_string('federated_login', 'block_federated_login'));
+        $mform->setType('config_title', PARAM_TEXT);
+
+    }
+
+}

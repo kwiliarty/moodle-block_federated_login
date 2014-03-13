@@ -31,6 +31,7 @@ $string['configschoolcount']       = 'How many schools need to be configured?';
 $string['configschoolid']          = 'Enter a unique identifier for the school';
 $string['configschoolidp']         = "Enter the URL for the school's IDP";
 $string['configschoolname']        = 'Enter a display name for the school';
+$string['configtitle']             = 'Set a title for the block';
 $string['currently']               = 'Currently';
 $string['federated_login']         = 'Federated login';
 $string['helptext']                = 'Help link text';
