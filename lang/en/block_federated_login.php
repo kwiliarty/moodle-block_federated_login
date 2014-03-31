@@ -42,6 +42,7 @@ $string['loggedin']                = 'logged in';
 $string['managehome']              = 'Manage default home';
 $string['notloggedin']             = 'not logged in';
 $string['notset']                  = 'Not set';
+$string['pluginname']              = 'Federated login';
 $string['schoolcount']             = 'Number of schools';
 $string['schoolid']                = 'School id';
 $string['schoolidp']               = 'School IDP';
