@@ -15,15 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Manage federated logins
- *
- * @package block_federated_login
- * @copyright 2014 Smith College ITS
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    block_federated_login
+ * @copyright  2015 Kevin Wiliarty (kevin.wiliarty@gmail.com)
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->component = 'block_federated_login';
-$plugin->version = 2014033110; // Plugin release date.
-$plugin->requires = 2014051200; // Moodle 2.7.0 is required.
-$plugin->maturity = MATURITY_BETA; // Under development.
-$plugin->release = 'v1.1.0';
+defined('MOODLE_INTERNAL') || die();
+
+$observers = array(
+
+    array(
+        'eventname' => '\core\event\user_loggedin',
+        'callback'  => '\block_federated_login\observers::federated_user_loggedin',
+    ),
+);
+

@@ -42,6 +42,10 @@ $settings->add(new admin_setting_configtext('block_federated_login_help_url',
     get_string('helpurl', 'block_federated_login'),
     get_string('confighelpurl', 'block_federated_login'), ''));
 
+$settings->add(new admin_setting_configcheckbox('block_federated_login_logcookieuse',
+    get_string('logcookieuse', 'block_federated_login'), 
+    get_string('configlogcookieuse', 'block_federated_login'), 0));
+
 $numbers2select = array();
 for ($i = 0; $i <= 10; $i++) {
     $numbers2select[] = $i;
