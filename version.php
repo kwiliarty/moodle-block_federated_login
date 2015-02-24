@@ -22,5 +22,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version = 2014033101;
-$plugin->requires = 2010112400;
+$plugin->component = 'block_federated_login';
+$plugin->version = 2014033101; // Plugin release date.
+$plugin->requires = 2014051200; // Moodle 2.7.0 is required.
+$plugin->maturity = MATURITY_BETA; // Under development.
+$plugin->release = 'v1.1.0';
