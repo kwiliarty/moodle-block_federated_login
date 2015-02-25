@@ -23,7 +23,7 @@
  */
 
 $plugin->component = 'block_federated_login';
-$plugin->version = 2014033110; // Plugin release date.
+$plugin->version = 2015022500; // Plugin released on February 2, 2015.
 $plugin->requires = 2014051200; // Moodle 2.7.0 is required.
-$plugin->maturity = MATURITY_BETA; // Under development.
+$plugin->maturity = MATURITY_STABLE; // Ready for use on production sites.
 $plugin->release = 'v1.1.0';
