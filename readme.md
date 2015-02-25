@@ -34,6 +34,10 @@ If you have a page with help for users you can link to it. This setting allow yo
 
 If you have a page with help for users you can provide the URL for it here.
 
+### Log cookie use (starting in v1.1.0) ###
+
+Check the box if you would like to log information about default home cookie usage.
+
 ### Number of schools ###
 
 Enter the number of schools handled in your federation environment and then save the change to load the correct number of school-specific settings on the rest of the page.
@@ -59,6 +63,10 @@ Enter the URL for the school-specific IDP
 Individual block instances can have a customized title. To change the display title of a block, turn editing on on a screen that displays the block and click on the (gear) icon to edit the settings.
 
 ## Changelog ##
+
+### [v1.1.0] ###
+
+Requires Moodle 2.7 or higher. Includes an option to log default home cookie usage.
 
 ### [v1.0.0] ###
 * Initial release
