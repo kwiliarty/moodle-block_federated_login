@@ -1,6 +1,4 @@
-# [Federated Login v1.0.0]
-
-for Moodle 2.6 or higher
+# Federated Login
 
 The Federated Login Moodle block facilitates the use of "default home" cookies on Moodle sites that use a federated Shibboleth login.
 
