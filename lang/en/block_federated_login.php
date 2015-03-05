@@ -22,6 +22,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['federated_login:addinstance']   = 'Add a new Federated Login block';
+$string['federated_login:myaddinstance'] = 'Add a new Federated Login block to My home';
 $string['accounthome']                   = 'Default home:';
 $string['confighelptext']                = 'Text to display as a help link';
 $string['confighelpurl']                 = 'URL to a help page';
