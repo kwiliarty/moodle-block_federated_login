@@ -62,6 +62,10 @@ Individual block instances can have a customized title. To change the display ti
 
 ## Changelog ##
 
+### [v1.1.1] ###
+
+Bugfix: Adds missing language strings for adding instances
+
 ### [v1.1.0] ###
 
 Requires Moodle 2.7 or higher. Includes an option to log default home cookie usage.
