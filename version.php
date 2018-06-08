@@ -24,7 +24,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_federated_login';
-$plugin->version = 2015030400; // Plugin released on March 4, 2015.
-$plugin->requires = 2014051200; // Moodle 2.7.0 is required.
+$plugin->version = 2018060600; // Plugin released on June 8, 2018.
+$plugin->requires = 2017051500; // Moodle 3.3 is required.
 $plugin->maturity = MATURITY_STABLE; // Ready for use on production sites.
-$plugin->release = 'v1.1.1';
+$plugin->release = 'v1.2.0';
