@@ -48,6 +48,7 @@ $string['managehome']                    = 'Manage default home';
 $string['notloggedin']                   = 'not logged in';
 $string['notset']                        = 'Not set';
 $string['pluginname']                    = 'Federated login';
+$string['privacy:metadata']              = "The Federated login block stores a user's login preference in a local browser cookie. It does not store any user information on Moodle systems.";
 $string['schoolcount']                   = 'Number of schools';
 $string['schoolid']                      = 'School id';
 $string['schoolidp']                     = 'School IDP';
