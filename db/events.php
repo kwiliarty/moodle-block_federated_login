@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * This file registers observers to log federated logins.
+ *
  * @package    block_federated_login
  * @copyright  2015 Kevin Wiliarty (kevin.wiliarty@gmail.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

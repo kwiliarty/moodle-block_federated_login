@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * This file contains an observer to help log federated logins.
+ *
  * @package    block_federated_login
  * @copyright  2015 Kevin Wiliarty (kevin.wiliarty@gmail.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -24,6 +26,13 @@ namespace block_federated_login;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Observer class for login events
+ *
+ * @package    block_federated_login
+ * @copyright  2018 Kevin Wiliarty
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class observers {
 
     /**
@@ -32,7 +41,6 @@ class observers {
      * @param \core\event\user_loggedin $event
      * @return void
      */
-
     public static function federated_user_loggedin(\core\event\user_loggedin $event) {
 
         global $CFG, $DB;

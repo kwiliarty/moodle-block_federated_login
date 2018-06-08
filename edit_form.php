@@ -24,8 +24,20 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Federated login edit form
+ *
+ * @package    block_federated_login
+ * @copyright  2018 Kevin Wiliarty
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class block_federated_login_edit_form extends block_edit_form {
 
+    /**
+     * Defines the settings for specific block instances.
+     *
+     * @param object $mform Moodle form object
+     */
     protected function specific_definition($mform) {
 
         // Section header title according to language file.

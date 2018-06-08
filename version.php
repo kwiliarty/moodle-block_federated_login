@@ -21,6 +21,7 @@
  * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_federated_login';
 $plugin->version = 2015030400; // Plugin released on March 4, 2015.

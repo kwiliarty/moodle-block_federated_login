@@ -21,10 +21,9 @@
  * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
 
-/**
- * Require the file that defines the federated login object
- */
+// Require the file that defines the federated login object.
 require_once(dirname(__FILE__) . '/federated_login.class.php');
 
 /**

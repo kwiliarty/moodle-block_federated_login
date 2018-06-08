@@ -21,6 +21,7 @@
  * @copyright 2014 Smith College ITS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
 
 /**
  * Definitions
@@ -35,14 +36,24 @@ define('BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT', 5);
  */
 class block_federated_login_handler {
 
+    /** @var string HTML block content */
     public $content;
+    /** @var string Name of the login_home cookie */
     public $cookiename = '';
+    /** @var string Value of the login_home cookie */
     public $cookievalue = '';
+    /** @var int Number of schools to be configured */
     public $numberofschools = BLOCK_FEDERATED_LOGIN_DEFAULT_SCHOOL_COUNT;
+    /** @var array Schools participating in the federated login */
     public $schools = array();
+    /** @var array Some details of a user's home school */
     public $homeschool = array();
+    /** @var string Cookie management interface */
     public $cookiemanager = '';
 
+    /**
+     * Constructor
+     */
     public function __construct() {
 
         $this->get_cookievalue();
@@ -52,6 +63,11 @@ class block_federated_login_handler {
 
     }
 
+    /**
+     * Return the block content
+     *
+     * @return string The content of the block
+     */
     public function get_content() {
         $this->content .= $this->print_login_url();
         $this->content .= $this->print_homeschool();
@@ -60,6 +76,9 @@ class block_federated_login_handler {
         return $this->content;;
     }
 
+    /**
+     * Gets the name for the login_home cookie and sets it if it exists
+     */
     public function get_cookievalue() {
 
         global $CFG;
@@ -73,6 +92,9 @@ class block_federated_login_handler {
         }
     }
 
+    /**
+     * Sets up the array of federated schools
+     */
     public function get_schools() {
 
         global $CFG;
@@ -99,6 +121,9 @@ class block_federated_login_handler {
         }
     }
 
+    /**
+     * Get a user's home institution
+     */
     public function get_homeschool() {
         if (empty($this->cookievalue)) {
             $this->homeschool = '';
@@ -112,6 +137,9 @@ class block_federated_login_handler {
         }
     }
 
+    /**
+     * Set a cookiemanager if defined in settings
+     */
     public function get_cookiemanager() {
 
         global $CFG;
@@ -121,6 +149,11 @@ class block_federated_login_handler {
         }
     }
 
+    /**
+     * Print a user's homeschool
+     *
+     * @return string HTML for a user's home school
+     */
     public function print_homeschool() {
 
         $accounthome = (!empty($this->homeschool)) ? $this->homeschool['name'] : get_string('notset', 'block_federated_login');
@@ -132,6 +165,11 @@ class block_federated_login_handler {
         return $accounthomediv;
     }
 
+    /**
+     * Print a login url
+     *
+     * @return string HTML for the login URL
+     */
     public function print_login_url() {
 
         global $CFG;
@@ -151,6 +189,11 @@ class block_federated_login_handler {
         return "$currentdiv\n$logindiv";
     }
 
+    /**
+     * Print the cookie manager link
+     *
+     * @return string HTML for the cookie manager link
+     */
     public function print_cookiemanager() {
 
         if (empty($this->cookiemanager)) {
@@ -165,6 +208,11 @@ class block_federated_login_handler {
         return $cookiemanagerdiv;
     }
 
+    /**
+     * Print the help link
+     *
+     * @return string HTML for the help link
+     */
     public function print_help_link() {
 
         global $CFG;

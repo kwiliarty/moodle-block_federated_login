@@ -31,6 +31,9 @@ defined('MOODLE_INTERNAL') || die;
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class federated_user_loggedin extends \core\event\base {
+    /**
+     * Set up some logging parameters.
+     */
     protected function init() {
         $this->data['crud'] = 'r';
         $this->data['edulevel'] = self::LEVEL_OTHER;
@@ -38,14 +41,29 @@ class federated_user_loggedin extends \core\event\base {
         $this->context = \context_system::instance();
     }
 
+    /**
+     * Return the 'user logged in' string.
+     *
+     * @return string 'User logged in'
+     */
     public static function get_name() {
         return get_string('event_federated_user_loggedin', 'block_federated_login');
     }
 
+    /**
+     * Return data for logging.
+     *
+     * @return string Data for logging
+     */
     public function get_description() {
         return "user={$this->other['username']}, auth={$this->other['auth']}, default home={$this->other['defaulthome']}";
     }
 
+    /**
+     * Return the login URL
+     *
+     * @return object Moodle login URL
+     */
     public function get_url() {
         return new \moodle_url(get_login_url());
     }
